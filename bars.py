@@ -48,7 +48,8 @@ def set_data(umsatz=3000, anteil_hausmarke=66):
                provisionsquellen[3]]
     provision = [provision_andere, provision_eigenmarke, provision_kombiniert, provision_neu]
     data_source.data = dict(provision=provision,
-                            #provision_neu=[provision_neu],
+                            line_limits=[0, 1, 2, len(provision)+1],
+                            provision_neu=[provision_neu]*4,
                             quellen=quellen,
                             text=['{} €'.format(int(p)) for p in provision],
                             color=COLORMAP)
@@ -66,7 +67,7 @@ plot = figure( x_range=provisionsquellen,
                plot_width=800)
 plot.vbar(x='quellen', top='provision', width=0.9, color='color', legend='quellen', source=data_source)
 plot.text(x='quellen', y='provision', text='text', text_align='center', text_baseline='top', source=data_source)
-plot.line(x=range(len(provisionsquellen)+1), y=[100]*(len(provisionsquellen)+1), line_color=COLORMAP[-1])
+plot.line(x='line_limits', y='provision_neu', line_color=COLORMAP[-1], source=data_source)
 plot.xgrid.grid_line_color = None
 plot.legend.orientation = 'horizontal'
 plot.legend.location='top_center'
