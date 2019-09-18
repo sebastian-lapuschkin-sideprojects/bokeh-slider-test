@@ -160,24 +160,30 @@ if __name__ == '__main__':
     import matplotlib.pyplot as plt
     import matplotlib.cm as cm
     import numpy
+    import tqdm
+    import os
     a = []
     u = []
     v = []
     fig = plt.figure()
-    plt.title('Altes vs neues Provisionssystem. Grün = Neu gewinnt')
+    plt.title('Altes vs neues Provisionssystem. \n' +
+    'Grün = 28+% auf Netto ist besser als bisher \n' +
+    'Gelb = 30% auf Netto ist besser als bisher')
     plt.xlabel('Umsatz in €')
     plt.ylabel('Anteil Eigenmarke in %')
 
 
-    for umsatz in range(1,3001, 5):
+    for umsatz in tqdm.tqdm(range(1,4001,50)):
         for anteil in range(0,101, 1):
             set_data(umsatz, anteil)
             a.append(anteil)
             u.append(umsatz)
-            v.append(data_source.data['provision'][2] < data_source.data['provision'][3])
+            provision_kombiniert = data_source.data['provision'][2]
+            v.append(provision_kombiniert < data_source.data['provision_neu_30'][0])
+            v[-1] += provision_kombiniert < data_source.data['provision_neu_28'][0]
 
-            print(umsatz, anteil)
 
 
     plt.scatter(x=u, y=a, c=v, marker='.', linewidths=2, alpha=0.6, cmap=cm.get_cmap('RdYlGn'))
     plt.savefig('doc/überblick.pdf')
+    os.system('convert doc/überblick.pdf -density 300 doc/überblick.png')
