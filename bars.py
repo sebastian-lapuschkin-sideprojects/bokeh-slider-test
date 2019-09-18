@@ -84,13 +84,13 @@ plot.legend.orientation = 'horizontal'
 plot.legend.location='top_center'
 
 #set initial data
-UMSATZ=2500
+UMSATZ=6000
 ANTEIL_HAUSMARKE=int(100*2/3)
 set_data(UMSATZ, ANTEIL_HAUSMARKE)
 
 #add gui elements and callbacks
 anteil_slider = Slider(start=0, end=100, step=1, value=ANTEIL_HAUSMARKE, title='Anteil Eigenmarkeprodukte in %')
-umsatz_slider = Slider(start=0, end=4000, step=1, value=UMSATZ, title='Umsatz pro Monat in € (Brutto)')
+umsatz_slider = Slider(start=0, end=7500, step=1, value=UMSATZ, title='Umsatz pro Monat in € (Brutto)')
 anteil_textinput = TextInput(value=str(ANTEIL_HAUSMARKE))
 umsatz_textinput = TextInput(value=str(UMSATZ))
 bonus_label = Button(label='SET ME')
@@ -173,7 +173,7 @@ if __name__ == '__main__':
     plt.ylabel('Anteil Eigenmarke in %')
 
 
-    for umsatz in tqdm.tqdm(range(1,4001,50)):
+    for umsatz in tqdm.tqdm(range(1,7501,50)):
         for anteil in range(0,101, 1):
             set_data(umsatz, anteil)
             a.append(anteil)
