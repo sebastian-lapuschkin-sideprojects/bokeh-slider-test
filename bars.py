@@ -1,10 +1,11 @@
-# a simple first iteration of the target app, able to handle only one user and exercise at a time.
+# simple bar chart example using a real use case
 
 import datetime
 import natsort
 from random import random
 import pandas as pd
 import json
+import numpy as np
 
 from bokeh.plotting import curdoc, figure
 
@@ -154,7 +155,7 @@ layout = layout([plot,[[umsatz_slider, umsatz_textinput], [anteil_slider, anteil
 curdoc().add_root(layout)
 
 
-if __name__ == '__main__':
+if __name__ == '__main__' and False:
     # provides an overview over all parametres
     # slow and wasteful. only do once.
     import matplotlib.pyplot as plt
