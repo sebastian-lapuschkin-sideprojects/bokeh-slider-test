@@ -64,7 +64,7 @@ def set_data(anteil_hausmarke=0, teamumsatz=0, anteil_3prozent=0):
                             'provision_alt_min':provision_alt_min,
                             'provision_alt_max':provision_alt_max,
                             'provision_alt_actual':provision_alt_actual,
-                            'provisionsrate_alt':provisionsrate_alt
+                            'provisionsrate_alt':provisionsrate_alt,
                             'provision_neu':provision_neu,
                             'provision_neu_plusteam':provision_neu_plusteam,
                             'provisionsrate_neu':provisionsrate_neu
