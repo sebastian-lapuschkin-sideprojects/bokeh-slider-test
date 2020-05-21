@@ -31,8 +31,10 @@ data_source = ColumnDataSource(data={
                                     'provision_alt_min':[],
                                     'provision_alt_max':[],
                                     'provision_alt_actual':[],
+                                    'provisionsrate_alt':[]
                                     'provision_neu':[],
-                                    'provision_neu_plusteam':[]
+                                    'provision_neu_plusteam':[],
+                                    'provisionsrate_neu':[]
                                     })
 
 def set_data(anteil_hausmarke=0, teamumsatz=0, anteil_3prozent=0):
@@ -62,8 +64,10 @@ def set_data(anteil_hausmarke=0, teamumsatz=0, anteil_3prozent=0):
                             'provision_alt_min':provision_alt_min,
                             'provision_alt_max':provision_alt_max,
                             'provision_alt_actual':provision_alt_actual,
+                            'provisionsrate_alt':provisionsrate_alt
                             'provision_neu':provision_neu,
-                            'provision_neu_plusteam':provision_neu_plusteam
+                            'provision_neu_plusteam':provision_neu_plusteam,
+                            'provisionsrate_neu':provisionsrate_neu
                             }
 
 # Visualisierung
@@ -116,12 +120,14 @@ plot.legend.location='bottom_right'
 h = HoverTool(mode='vline')
 h.tooltips = [  ('Brutto-Umsatz', '@umsatz_brutto €'),
                 ('',''),
+                ('P-alt: Basisrate auf Brutto',  '@provisionsrate_alt{0.00 a}'),
                 ('P-alt (untergrenze)', '@provision_alt_min{0.00 a} €'),
                 ('P-alt (obergrenze)', '@provision_alt_max{0.00 a} €'),
                 ('P-alt (tatsächlich)', '@provision_alt_actual{0.00 a} €'),
                 ('',''),
+                ('P-neu: Basisrate auf Netto',  '@provisionsrate_neu{0.00 a}'),
                 ('P-neu (basis)', '@provision_neu{0.00 a} €'),
-                ('P-neu (mit Teamumsatz)', '@provision_neu_plusteam{0.00 a} €')
+                ('P-neu (mit Teamumsatz)', '@provision_neu_plusteam{0.00 a} €'),
             ]
 h.renderers = [p5]
 plot.add_tools(h)
