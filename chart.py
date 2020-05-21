@@ -31,7 +31,7 @@ data_source = ColumnDataSource(data={
                                     'provision_alt_min':[],
                                     'provision_alt_max':[],
                                     'provision_alt_actual':[],
-                                    'provisionsrate_alt':[]
+                                    'provisionsrate_alt':[],
                                     'provision_neu':[],
                                     'provision_neu_plusteam':[],
                                     'provisionsrate_neu':[]
@@ -54,7 +54,8 @@ def set_data(anteil_hausmarke=0, teamumsatz=0, anteil_3prozent=0):
     provisionsrate_neu[umsatz_brutto > 1500] = 0.24                     # "bis 2500" (ab 1500)
     provisionsrate_neu[umsatz_brutto > 2500] = 0.26                     # "ab 2500"
     provisionsrate_neu[umsatz_brutto > 3500] = 0.28                     # "ab 3500"
-    provision_neu = umsatz_netto * provisionsrate_neu
+    provisionsrate_neu /= 1.19                                          # nettorate umgerechnet auf bruttorate. entfernen wenn umsatz auf brutto erfolgt.
+    provision_neu = umsatz_brutto * provisionsrate_neu
     provision_neu_plusteam = provision_neu + (1-anteil_3prozent/100)*teamumsatz*0.02 + (anteil_3prozent/100)*teamumsatz*0.03
 
     # register data
@@ -125,7 +126,7 @@ h.tooltips = [  ('Brutto-Umsatz', '@umsatz_brutto €'),
                 ('P-alt (obergrenze)', '@provision_alt_max{0.00 a} €'),
                 ('P-alt (tatsächlich)', '@provision_alt_actual{0.00 a} €'),
                 ('',''),
-                ('P-neu: Basisrate auf Netto',  '@provisionsrate_neu{0.00 a}'),
+                ('P-neu: Basisrate auf Brutto',  '@provisionsrate_neu{0.00 a}'),
                 ('P-neu (basis)', '@provision_neu{0.00 a} €'),
                 ('P-neu (mit Teamumsatz)', '@provision_neu_plusteam{0.00 a} €'),
             ]
