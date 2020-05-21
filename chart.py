@@ -98,13 +98,13 @@ plot.add_layout(band)
 
 
 
-p1 = plot.line(x='umsatz_brutto', y='provision_alt_max', line_color=COLORMAP[1], line_width=3, source=data_source, legend_label='P-alt (untergrenze)')
-p2 = plot.line(x='umsatz_brutto', y='provision_alt_min', line_color=COLORMAP[1], line_width=3, source=data_source, legend_label='P-alt (obergrenze)')
-p3 = plot.line(x='umsatz_brutto', y='provision_alt_actual', line_color=COLORMAP[0], line_width=3, source=data_source, legend_label='P-alt (tatsächlich)')
+p1 = plot.line(x='umsatz_brutto', y='provision_alt_max', line_color=COLORMAP[1], line_width=3, source=data_source, legend='P-alt (untergrenze)')
+p2 = plot.line(x='umsatz_brutto', y='provision_alt_min', line_color=COLORMAP[1], line_width=3, source=data_source, legend='P-alt (obergrenze)')
+p3 = plot.line(x='umsatz_brutto', y='provision_alt_actual', line_color=COLORMAP[0], line_width=3, source=data_source, legend='P-alt (tatsächlich)')
 
 # Wertebereich der neuen Provision
-p4 = plot.line(x='umsatz_brutto', y='provision_neu',            line_color=COLORMAP[3], line_width=3, source=data_source, legend_label='P-neu (basis)')
-p5 = plot.line(x='umsatz_brutto', y='provision_neu_plusteam',   line_color=COLORMAP[2], line_width=3, source=data_source, legend_label='P-neu (mit Teamumsatz)')
+p4 = plot.line(x='umsatz_brutto', y='provision_neu',            line_color=COLORMAP[3], line_width=3, source=data_source, legend='P-neu (basis)')
+p5 = plot.line(x='umsatz_brutto', y='provision_neu_plusteam',   line_color=COLORMAP[2], line_width=3, source=data_source, legend='P-neu (mit Teamumsatz)')
 
 
 plot.xaxis.axis_label='Umsatz (Brutto)'
