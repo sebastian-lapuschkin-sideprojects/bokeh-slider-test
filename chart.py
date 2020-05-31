@@ -54,7 +54,7 @@ def set_data(anteil_hausmarke=0, teamumsatz=0, anteil_3prozent=0):
     provisionsrate_neu[umsatz_brutto > 1500] = 0.24                     # "bis 2500" (ab 1500)
     provisionsrate_neu[umsatz_brutto > 2500] = 0.26                     # "ab 2500"
     provisionsrate_neu[umsatz_brutto > 3500] = 0.28                     # "ab 3500"
-    provisionsrate_neu /= 1.19                                          # nettorate umgerechnet auf bruttorate. entfernen wenn umsatz auf brutto erfolgt.
+    #provisionsrate_neu /= 1.19                                          # nettorate umgerechnet auf bruttorate. entfernen wenn umsatz auf brutto erfolgt.
     provision_neu = umsatz_brutto * provisionsrate_neu
     provision_neu_plusteam = provision_neu + (1-anteil_3prozent/100)*teamumsatz*0.02 + (anteil_3prozent/100)*teamumsatz*0.03
 
