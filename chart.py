@@ -140,7 +140,7 @@ anteil_3prozent=100
 
 #UI-Steuerelemente
 anteil_hausmarke_slider     = Slider(start=0, end=100,      step=1,     value=anteil_hausmarke,     title='ALT: Anteil Eigenmarkeprodukte in %')
-teamumsatz_slider           = Slider(start=0, end=10000,    step=50,    value=teamumsatz,           title='NEU: Teamumsatz / Monat in € (Brutto/Netto?)')
+teamumsatz_slider           = Slider(start=0, end=10000,    step=50,    value=teamumsatz,           title='NEU: Teamumsatz / Monat in €')
 anteil_3prozent_slider      = Slider(start=0, end=100,      step=1,     value=anteil_3prozent,      title='NEU: Anteil 3% auf Teamumsatz')
 set_data(anteil_hausmarke, teamumsatz, anteil_3prozent)
 
